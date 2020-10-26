@@ -26,7 +26,7 @@ namespace RetornaJuros.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = "" });
+                return BadRequest(new { message = ex });
             }           
         }
     }
