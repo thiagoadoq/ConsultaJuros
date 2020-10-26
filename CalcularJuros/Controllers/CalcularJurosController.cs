@@ -18,11 +18,11 @@ namespace CalculaJuros.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Calcular juros compostos
         /// </summary>
-        /// <param name="vlInicial"></param>
-        /// <param name="tempo"></param>
-        /// <returns></returns>
+        /// <param name="vlInicial"> Valor a calcular</param>
+        /// <param name="tempo">Quantidade de meses</param>
+        /// <returns>Valor do juros compostos</returns>
         [Route("calculaJuros")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -38,7 +38,6 @@ namespace CalculaJuros.Controllers
                     success = true,
                     content = vlJuro
                 });
-
             }
             catch (Exception ex)
             {
