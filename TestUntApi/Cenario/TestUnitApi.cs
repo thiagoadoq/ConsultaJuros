@@ -1,5 +1,4 @@
 using CalculaJuros.Controllers;
-using System;
 using Xunit;
 
 namespace TestUntApi
@@ -14,7 +13,6 @@ namespace TestUntApi
             var resulte = await _controller.GetJuros(100,5);
 
             //Assert.Equal("Valor do juro=R$ 105,10","");
-
         }
 
         [Fact]
@@ -23,7 +21,6 @@ namespace TestUntApi
             CalcularJurosController _controller = new CalcularJurosController();           
 
             Assert.Equal("https://github.com/thiagoadoq/TestConsultaJuros", _controller.GetRepository());
-
         }
     }
 }

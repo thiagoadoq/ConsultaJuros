@@ -58,7 +58,7 @@ namespace CalculaJuros.Controllers
         {
             try
             {
-                return "https://github.com/thiagoadoq/TestConsultaJuros";
+                return "https://github.com/thiagoadoq/ConsultaJuros";
 
             }
             catch (Exception)
