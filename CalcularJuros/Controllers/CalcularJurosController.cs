@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CalculaJuros.Service;
+using ConsultaJuros.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,37 +10,40 @@ namespace CalculaJuros.Controllers
     [Route("api/calJuros")]
     public class CalcularJurosController : Controller
     {
+        private readonly IJurosRepository _repository;
+
+        public CalcularJurosController(IJurosRepository repository)
+        {
+            _repository = repository;
+        }
+
         /// <summary>
-        /// Endpont para calcular juros compostos
+        /// 
         /// </summary>
-        /// <param name="vlInicial">Valor contabel</param>
-        /// <param name="tempo">Quantidade de messes</param>
-        /// <returns>Valor do juro</returns>
+        /// <param name="vlInicial"></param>
+        /// <param name="tempo"></param>
+        /// <returns></returns>
         [Route("calculaJuros")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetJuros(decimal vlInicial, int tempo)
         {
-            Api api = new Api();
-            var vJuro = Convert.ToDouble(await api.GetJuros());
-
             try
             {
-                var resultado = vlInicial * Convert.ToDecimal(Math.Pow(1 + vJuro, tempo));
-                var valorJuro = String.Format("{0:C2}", resultado);
+                var vlJuro = await _repository.Get(vlInicial, tempo);               
 
                 return Ok(new
                 {
                     success = true,
-                    content = valorJuro
+                    content = vlJuro
                 });
 
             }
             catch (Exception ex)
             {
-                return BadRequest(new {
-
+                return BadRequest(new
+                {
                     success = false,
                     errors = new { message = ex }
                 });
@@ -54,16 +57,25 @@ namespace CalculaJuros.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public string GetRepository()
+        public IActionResult GetRepository()
         {
             try
             {
-                return "https://github.com/thiagoadoq/ConsultaJuros";
+                 var url = _repository.GetDiretorio();
+                return Ok(new
+                {
+                    success = true,
+                    content = url
+                });               
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "Não foi possivel localizar o diretório  do github";
+                return BadRequest(new
+                {
+                    success = false,
+                    errors = new { message = ex }
+                });
             }
         }
     }

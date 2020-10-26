@@ -1,3 +1,5 @@
+using ConsultaJuros.Interface;
+using ConsultaJuros.Model.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +27,8 @@ namespace ConsultaJuros
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Consulta Juros", Version = "v1", });            
             });
+
+            services.AddScoped<IJurosRepository, JuroRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

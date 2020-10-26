@@ -1,26 +1,28 @@
 using CalculaJuros.Controllers;
+using ConsultaJuros.Interface;
+using ConsultaJuros.Model.Repository;
 using Xunit;
 
 namespace TestUntApi
 {
     public class TestUnitApi
     {
+        private IJurosRepository _repository = new JuroRepository();               
+
         [Fact]
         public async void GetConsultaJuros()
         {
-            CalcularJurosController _controller = new CalcularJurosController();
+            var vJuros = await _repository.Get(100, 5);
 
-            var resulte = await _controller.GetJuros(100,5);
-
-            //Assert.Equal("Valor do juro=R$ 105,10","");
+            Assert.Equal("R$ 105,10", vJuros);
         }
 
         [Fact]
         public void GetRepositorioGitHub()
         {
-            CalcularJurosController _controller = new CalcularJurosController();           
+            var diretorio = _repository.GetDiretorio();
 
-            Assert.Equal("https://github.com/thiagoadoq/TestConsultaJuros", _controller.GetRepository());
+            Assert.Equal("https://github.com/thiagoadoq/ConsultaJuros", diretorio);
         }
     }
 }

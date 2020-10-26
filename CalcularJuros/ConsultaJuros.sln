@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultaJuros", "ConsultaJuros.csproj", "{624092FF-7EB5-450D-9D7E-175E69436092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUntApi", "..\TestUntApi\TestUntApi.csproj", "{9BCAA732-8E59-40E2-BEFA-667BEB205CED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUntApi", "..\TestUntApi\TestUntApi.csproj", "{9BCAA732-8E59-40E2-BEFA-667BEB205CED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,4 +20,4 @@ COPY ./CounterPage/build ./wwwroot
 RUN useradd -m myappuser
 USER myappuser
 
-CMD ASPNETCORE_URLS="http://*:$PORT" dotnet RetornaJuros.dll
+CMD ASPNETCORE_URLS="http://*:$PORT" dotnet RetornaJuros .dll
