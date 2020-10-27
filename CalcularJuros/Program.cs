@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 namespace ConsultaJuros
@@ -15,6 +15,7 @@ namespace ConsultaJuros
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
                 });
     }
 }

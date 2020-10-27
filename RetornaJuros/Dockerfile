@@ -3,7 +3,7 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["RetornaJuros/RetornaJuros.csproj", "RetornaJuros/"]
+COPY ["RetornaJuros.csproj", "RetornaJuros/"]
 RUN dotnet restore "RetornaJuros/RetornaJuros.csproj"
 COPY ./RetornaJuros ./RetornaJuros
 WORKDIR "/src/RetornaJuros"
@@ -21,3 +21,6 @@ RUN useradd -m myappuser
 USER myappuser
 
 CMD ASPNETCORE_URLS="http://*:$PORT" dotnet RetornaJuros.dll
+
+
+
