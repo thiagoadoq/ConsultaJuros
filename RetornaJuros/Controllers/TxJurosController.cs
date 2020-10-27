@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net.Mime;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace RetornaJuros.Controllers
 {
@@ -18,15 +16,15 @@ namespace RetornaJuros.Controllers
         [HttpGet]       
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetTaxaJutos()
+        public string GetTaxaJutos()
         {
             try
             {
-                return Ok("0,01");
+                return "0,01";
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex });
+                return $"Não foi possivel retornar a taxa de juros={ex}";
             }           
         }
     }

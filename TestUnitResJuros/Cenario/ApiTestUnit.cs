@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RetornaJuros.Controllers;
+using Xunit;
 
 namespace TestUnitResJuros.Cenario
 {
-    class ApiTestUnit
+    public class ApiTestUnit
     {
+        [Fact]
+        public void GetConsultaJuros()
+        {
+            TxJurosController _controller = new TxJurosController();
+
+            var vtaxa =  _controller.GetTaxaJutos();
+
+            Assert.Equal("0,01", vtaxa);
+        }
     }
 }
